@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const api = async ({ url, headers, method = 'GET', body = {} }) => {
-  console.log({ url });
   const options = {
     url,
     method,
@@ -15,7 +14,6 @@ const api = async ({ url, headers, method = 'GET', body = {} }) => {
 
     return (await axios.request(options)).data;
   } catch (e) {
-    console.error(e);
     throw new Error(e.message);
   }
 };

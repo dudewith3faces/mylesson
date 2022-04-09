@@ -13,45 +13,4 @@ export const MovieComponent = ({ title, director, plot, poster }) => {
       </div>
     </div>
   );
-
-  //   return (
-  //     <div className='card-container box'>
-  //       <div className='card-flip'>
-  //         {/* Card Front */}
-  //         <div className='card front'>
-  //           <img
-  //             src={image}
-  //             className='card-img-top img-fluid'
-  //             alt='movie-poster'
-  //           />
-  //           <div className='card-block'>
-  //             <h5 className='card-title'>{title}</h5>
-  //             {/* <p className='card-text'>some text here</p>
-  //             <p className='card-text'>
-  //               <small className='text-muted'>2011</small>
-  //             </p> */}
-  //           </div>
-  //         </div>
-  //         {/* End Card Front */}
-
-  //         {/* Card Back  */}
-  //         <div className='card back'>
-  //           <div className='card-header warning-color'></div>
-  //           <div className='card-block text-center'>
-  //             <h4 className='card-title'>{director}</h4>
-  //             <p className='card-text'>
-  //               <span href='#' className='rating'>
-  //                 {plot}
-  //               </span>
-  //             </p>
-  //             <a href='#' className='btn orange'>
-  //               Watch
-  //             </a>
-  //           </div>
-  //           <img className='movie' src={image} alt='back-img' />
-  //         </div>
-  //         {/* End Card Back */}
-  //       </div>
-  //     </div>
-  //   );
 };
