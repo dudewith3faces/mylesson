@@ -1,4 +1,4 @@
-CREATE TABLE "public"."Movie" (
+CREATE TABLE "public"."Movies" (
     "id" integer GENERATED ALWAYS AS IDENTITY,
     "title" text NOT NULL,
     "director" text NOT NULL,
