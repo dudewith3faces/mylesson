@@ -3,16 +3,12 @@ import {
   TextInputComponent,
   MovieComponent,
 } from './components';
-import { MovieSearchService } from './service';
+import { MovieSearchService } from './services';
 
 import './App.css';
 
 function App() {
-  const { onSubmit, onChange, q, movies } = MovieSearchService();
-
-  const moviesUi = movies.map((data) => (
-    <MovieComponent key={data.id} {...data} />
-  ));
+  const { onSubmit, onChange, q, movies, hasSearched } = MovieSearchService();
 
   return (
     <div className='App'>
@@ -37,7 +33,17 @@ function App() {
           </CardComponent>
         </section>
 
-        <section className='d-flex flex-wrap'>{moviesUi}</section>
+        <section className='d-flex flex-wrap'>
+          {hasSearched ? (
+            movies.length > 0 ? (
+              movies.map((data) => <MovieComponent key={data.id} {...data} />)
+            ) : (
+              <div className='d-flex justify-content-center'>
+                <p>No data found</p>
+              </div>
+            )
+          ) : null}
+        </section>
       </main>
     </div>
   );

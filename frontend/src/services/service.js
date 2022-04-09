@@ -1,4 +1,7 @@
-const movies = [
+import { useState } from 'react';
+
+import { getMovies } from './api';
+const testData = [
   {
     id: 3,
     title: 'Lloyd in Space',
@@ -154,5 +157,25 @@ const movies = [
 ];
 
 export const MovieSearchService = () => {
-  return { movies };
+  const [q, setQuery] = useState('');
+  const [movies, setMovies] = useState(testData);
+
+  const [hasSearched, setHasSearched] = useState(false);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const res = await getMovies(q);
+
+    console.log(res);
+
+    setMovies(res);
+    setHasSearched(true);
+  };
+
+  const onChange = ({ target: { value } }) => {
+    setQuery(value);
+  };
+
+  return { movies, q, onChange, onSubmit, hasSearched };
 };
