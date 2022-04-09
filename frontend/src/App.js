@@ -1,9 +1,19 @@
-import { CardComponent, TextInputComponent } from './components';
-import './App.css';
+import {
+  CardComponent,
+  TextInputComponent,
+  MovieComponent,
+} from './components';
 import { MovieSearchService } from './service';
 
+import './App.css';
+
 function App() {
-  const { onSubmit, onChange, q } = MovieSearchService();
+  const { onSubmit, onChange, q, movies } = MovieSearchService();
+
+  const moviesUi = movies.map((data) => (
+    <MovieComponent key={data.id} {...data} />
+  ));
+
   return (
     <div className='App'>
       <main className='container'>
@@ -11,10 +21,10 @@ function App() {
           <h1 className='mx-auto'>Movie Search</h1>
         </header>
 
-        <section>
+        <section className='my-5'>
           <CardComponent>
             <form onSubmit={onSubmit}>
-              <div className='d-flex'>
+              <div className='d-flex flex-row'>
                 <TextInputComponent
                   name='q'
                   placeholder='Search movie'
@@ -26,6 +36,8 @@ function App() {
             </form>
           </CardComponent>
         </section>
+
+        <section className='d-flex flex-wrap'>{moviesUi}</section>
       </main>
     </div>
   );
