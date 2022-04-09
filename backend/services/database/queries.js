@@ -1,9 +1,9 @@
 const { selectAll } = require('./pool');
 
-const searchMovies = (query) => {
-    const sql = `SELECT * FROM Movies WHERE 'aaaaaaaa' LIKE '%' || $1 || '%'`;
+const searchMovies = async (query) => {
+  const sql = `SELECT * FROM "public"."Movies"`;
 
-    return await selectAll(sql, [query]);
+  return await selectAll(sql);
 };
 
-module.exports = { searchMovies }
+module.exports = { searchMovies };

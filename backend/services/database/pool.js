@@ -1,8 +1,10 @@
-import { Pool } from 'pg';
-import { databaseConfig } from '../../configs';
+const { Pool } = require('pg');
+const { databaseConfig } = require('../../config');
 
 const pool = new Pool(databaseConfig);
 
-export async function selectAll(sql, args) {
-  return ((await pool.query) < T > (sql, args)).rows;
-}
+const selectAll = async (sql, args) => {
+  return (await pool.query(sql, args)).rows;
+};
+
+module.exports = { selectAll };
