@@ -3,7 +3,7 @@ const format = require('pg-format');
 
 const tableName = `"public"."Movies"`;
 
-const searchMovies = async (query) => {
+const searchMovies = async (q) => {
   const sql = `SELECT * FROM ${tableName}`;
 
   return await query(sql);
