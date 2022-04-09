@@ -1,4 +1,14 @@
+const compose = require('koa-compose');
+const Cors = require('koa2-cors');
 const { BaseResponse } = require('../models');
+
+const corsOption = {
+  allowHeaders: ['Content-Type', 'Accept'],
+  allowMethods: ['GET', 'POST', 'OPTIONS', 'DELETE'],
+  origin: '*',
+};
+
+const cors = Cors(corsOption);
 
 const errorMiddleware = async (ctx, next) => {
   try {
@@ -11,4 +21,6 @@ const errorMiddleware = async (ctx, next) => {
   }
 };
 
-module.exports = { errorMiddleware };
+const middlewares = compose([cors, errorMiddleware]);
+
+module.exports = { middlewares };

@@ -1,6 +1,6 @@
 const koa = require('koa');
 const { PORT } = require('./config');
-const { errorMiddleware } = require('./middleware');
+const { middlewares } = require('./middleware');
 const { routes } = require('./route');
 const { populateDatabase } = require('./services');
 
@@ -8,6 +8,6 @@ populateDatabase();
 
 const app = new koa();
 
-app.use(errorMiddleware).use(routes);
+app.use(middlewares).use(routes);
 
 app.listen(PORT);
