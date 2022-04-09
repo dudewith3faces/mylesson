@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import { CardComponent, TextInputComponent } from './components';
 import './App.css';
+import { MovieSearchService } from './service';
 
 function App() {
+  const { onSubmit, onChange, q } = MovieSearchService();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <main className='container'>
+        <header className='d-flex'>
+          <h1 className='mx-auto'>Movie Search</h1>
+        </header>
+
+        <section>
+          <CardComponent>
+            <form onSubmit={onSubmit}>
+              <div className='d-flex'>
+                <TextInputComponent
+                  name='q'
+                  placeholder='Search movie'
+                  onChange={onChange}
+                  value={q}
+                  type='text'
+                />
+              </div>
+            </form>
+          </CardComponent>
+        </section>
+      </main>
     </div>
   );
 }
