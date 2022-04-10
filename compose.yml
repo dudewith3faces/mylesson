@@ -6,23 +6,13 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
-    ports:
-      - '5432:5432'
 
-  backend:
-    container_name: search_backend
+  app:
+    container_name: app
     build: ./backend/
-    ports:
-      - '50000:50000'
-    depends_on:
-      postgres:
-        condition: service_healthy
 
   web:
     container_name: web
     build: ./frontend
     ports:
       - '80:80'
-    depends_on:
-      backend:
-        condition: service_healthy
