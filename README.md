@@ -8,11 +8,11 @@ This software comprises of frontend built with React, a backend with [KoaJs](htt
 
 ## Software
 
-Please see [Installation](/Documentation/Installation.md#software)
+Please see [Software](/Documentation/Installation.md#software)
 
 ## Setup
 
-Please see [Start](/Documentation/Installation.md#startup)
+Please see [Setup](/Documentation/Installation.md#startup)
 
 ## Architectural Design
 
