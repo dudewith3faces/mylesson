@@ -4,7 +4,7 @@
 
 This is a movie search web app that queries movies.
 
-This software comprises of frotnend built with React, backend with [KoaJs](https://koajs.com), and Postgres for data storage.
+This software comprises of frontend built with React, a backend with [KoaJs](https://koajs.com), and Postgres for data storage.
 
 ## Software
 
