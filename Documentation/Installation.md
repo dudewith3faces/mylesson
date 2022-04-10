@@ -30,4 +30,4 @@ The following software is required to start this app:
 - Run `docker-compose up -d` to start the app.
 
 - Login into the Postgres server. Create a database with SQL script in `SQL/createDB.sql` then create a table with the script in `SQL/movies.sql`.
-- Visit http://localhost to browse the application
+- Visit http://localhost:3000 if the app is not started with Docker else http://localhost to browse the application if it is started with docker
