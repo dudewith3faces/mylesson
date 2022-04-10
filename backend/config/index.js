@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const PORT = isNaN(process.env.PORT) ? 50000 : Number(process.env.PORT);
+const PORT = 50000;
 
 const databaseConfig = {
   user: process.env.PG_USER,
@@ -23,6 +23,8 @@ const omdbSearchEndpoint = (page = 1) =>
   `${omdbEndpoint}s=${omdbQuery}&y=${omdbYear}&page=${page}`;
 const omdbMovieEndpoint = (id) => `${omdbEndpoint}i=${id}&plot=full`;
 
+const elasticSearchConnectionDetails = process.env.ELASTIC_SEARCH_CONNECTION;
+
 const omdbMovieCount = 21;
 
 // http://www.omdbapi.com/?t=space&y=2001
@@ -37,4 +39,5 @@ module.exports = {
   omdbSearchEndpoint,
   omdbMovieEndpoint,
   omdbMovieCount,
+  elasticSearchConnectionDetails,
 };
