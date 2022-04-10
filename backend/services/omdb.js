@@ -4,13 +4,18 @@ const {
   omdbMovieEndpoint,
   omdbMovieCount,
 } = require('../config');
-const { insertMovies, getMovieCount, emptyTable } = require('./database');
+const {
+  insertMovies,
+  getMovieCount,
+  emptyTable,
+  getMovies,
+} = require('./database');
 
-const getMovies = async (page = 1) => {
+const _getMovies = async (page = 1) => {
   return await api({ url: omdbSearchEndpoint(page) });
 };
 
-const getMovie = async (id) => {
+const _getMovie = async (id) => {
   return await api({ url: omdbMovieEndpoint(id) });
 };
 
@@ -19,7 +24,7 @@ const getAllMovieDetails = async () => {
   const _search = [];
   let page = 1;
 
-  const { Search, totalResults } = await getMovies(page);
+  const { Search, totalResults } = await _getMovies(page);
 
   _search.push(...Search);
 
@@ -32,7 +37,7 @@ const getAllMovieDetails = async () => {
   }
 
   for (let i = 0; i < _search.length; i++)
-    promises.push(getMovie(_search[i].imdbID));
+    promises.push(_getMovie(_search[i].imdbID));
 
   return await Promise.all(promises);
 };

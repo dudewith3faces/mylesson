@@ -1,16 +1,23 @@
 const router = require('@koa/router')();
 const { BaseResponse } = require('../models');
-const { searchMovies, populateDatabase } = require('../services');
+const { Cache, populateDatabase, getMovies } = require('../services');
 
 router.get('/', async (ctx, next) => {
   let res = [];
   // TODO: get query from endpoint: ctx.request.query
   const { q } = ctx.request.query;
 
-  await populateDatabase();
-
   // TODO: search database for such data
-  if (q) res = await searchMovies(q);
+  if (q) {
+    if (Cache.isCacheEmpty()) {
+      await populateDatabase();
+
+      const movies = await getMovies();
+
+      Cache.add(movies);
+    }
+    res = Cache.query(q);
+  }
 
   // TODO return data from database
   ctx.status = 200;

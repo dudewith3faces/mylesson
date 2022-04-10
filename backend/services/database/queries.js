@@ -1,9 +1,9 @@
 const { query } = require('./pool');
 const format = require('pg-format');
 
-const tableName = `"public"."Movies"`;
+const tableName = `Movies`;
 
-const searchMovies = async (q) => {
+const getMovies = async () => {
   const sql = `SELECT * FROM ${tableName}`;
 
   return await query(sql);
@@ -29,4 +29,4 @@ const emptyTable = async () => {
   return;
 };
 
-module.exports = { searchMovies, insertMovies, getMovieCount, emptyTable };
+module.exports = { getMovies, insertMovies, getMovieCount, emptyTable };
