@@ -19,7 +19,7 @@ function App() {
 
         <section className='my-5'>
           <CardComponent>
-            <form onSubmit={onSubmit}>
+            <form role='form' onSubmit={onSubmit}>
               <div className='d-flex flex-row'>
                 <TextInputComponent
                   name='q'
@@ -29,11 +29,12 @@ function App() {
                   type='text'
                 />
               </div>
+              <button className='hide'>Search Movies</button>
             </form>
           </CardComponent>
         </section>
 
-        <section className='d-flex flex-wrap'>
+        <section role='row' className='d-flex flex-wrap'>
           {hasSearched ? (
             movies.length > 0 ? (
               movies.map((data) => <MovieComponent key={data.id} {...data} />)
