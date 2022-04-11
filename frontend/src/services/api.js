@@ -1,11 +1,6 @@
 import axios from 'axios';
 
-const api = async ({
-  url,
-  headers = { 'X-Requested-With': 'XMLHttpRequest' },
-  method = 'GET',
-  body = {},
-}) => {
+const api = async ({ url, headers, method = 'GET', body = {} }) => {
   const options = {
     url,
     method,
@@ -27,7 +22,7 @@ const devUrl = 'http://localhost:50000';
 const dockerUrl = 'http://app:50000';
 // ${process.env.NODE_ENV === 'production?' ?  : devUrl
 
-const getMoviesEndpoint = (q) => `${dockerUrl}?q=${q}`;
+const getMoviesEndpoint = (q) => `${devUrl}?q=${q}`;
 
 export const getMovies = async (q) =>
   (await api({ url: getMoviesEndpoint(q) })).data;
